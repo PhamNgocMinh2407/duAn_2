@@ -27,7 +27,7 @@ body {
 
 h2 { text-align: center; color: var(--primary-blue); margin-bottom: 1.5rem; }
 
-/* Social Buttons */
+
 .social-login { display: flex; gap: 10px; margin-bottom: 1.5rem; }
 .btn-social {
     flex: 1;
