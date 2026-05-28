@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin tài khoản SMEMBER</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+       
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="auth-card profile-card">
+        <div class="profile-header">
+            <img src="https://cellphones.com.vn/media/wysiwyg/Resource/S-Member.png" alt="S-Member" width="100">
+            <h2>Thông tin cá nhân</h2>
+        </div>
+
+        <div class="profile-body">
+            <div class="info-group">
+                <label>Họ và tên:</label>
+                <p id="display-name">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Số điện thoại:</label>
+                <p id="display-phone">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Email:</label>
+                <p id="display-email">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Ngày sinh:</label>
+                <p id="display-dob">Đang tải...</p>
+            </div>
+        </div>
+
+        <div class="profile-footer">
+            <button class="btn-main" onclick="window.location.href='index.html'">Về trang chủ</button>
+            <button class="btn-outline" onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <script src="database.js"></script>
+    <script>
+        // Lấy dữ liệu người dùng hiện tại từ bộ nhớ
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (user) {
+            document.getElementById('display-name').innerText = user.fullName || "Chưa cập nhật";
+            document.getElementById('display-phone').innerText = user.phone || "Chưa cập nhật";
+            document.getElementById('display-email').innerText = user.email || "Chưa cập nhật";
+            document.getElementById('display-dob').innerText = user.dob || "Chưa cập nhật";
+        }
+
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn'); 
+            localStorage.removeItem('currentUser'); 
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

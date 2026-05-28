@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-card">
+        <h2>Đăng ký thành viên</h2>
+        
+    <div class="social-login">
+    <button type="button" class="btn-social" onclick="loginWithGoogle()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" width="20"> Google
+    </button>
+    <button type="button" class="btn-social" onclick="loginWithFacebook()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="20"> Facebook
+    </button>
+</div>
+
+        <form id="registerForm">
+            <div class="grid">
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="fullName" placeholder="Nhập họ tên" required>
+                </div>
+                <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input type="date" id="dob" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="tel" id="phone" placeholder="Nhập SĐT" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Nhập email">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="password" placeholder="Tối thiểu 6 ký tự" required>
+                </div>
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu</label>
+                    <input type="password" id="confirmPassword" placeholder="Xác nhận lại" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main">Hoàn tất đăng ký</button>
+        </form>
+
+        <p class="footer-text">Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+    </div>
+
+   <script src="database.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
