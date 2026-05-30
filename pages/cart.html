@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng & Thanh Toán</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .checkout-form { width: 350px; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .checkout-form input, .checkout-form textarea { padding: 8px; }
+        .btn-checkout { background-color: #28a745; color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Giỏ hàng của bạn (Cart)</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tổng cộng</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="cart-table-body">
+            </tbody>
+    </table>
+
+    <div>
+        <p>Tạm tính: <strong id="sub-total">0</strong> đ</p>
+        <div>
+            <input type="text" id="voucher-input" placeholder="Nhập mã GIAM20 hoặc 50K">
+            <button id="btn-apply-voucher">Áp mã coupon</button>
+        </div>
+        <p>Được giảm: <strong id="discount-amount">0</strong> đ</p>
+        <h3>Tổng tiền thanh toán: <strong id="final-total">0</strong> đ</h3>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <h2>Thông tin thanh toán & Giao hàng</h2>
+    <form id="checkout-form" class="checkout-form">
+        <input type="text" id="customer-name" placeholder="Họ và tên khách hàng" required>
+        <input type="tel" id="customer-phone" placeholder="Số điện thoại liên hệ" required>
+        <textarea id="customer-address" placeholder="Địa chỉ nhận hàng chi tiết" required></textarea>
+        
+        <button type="submit" class="btn-checkout">XÁC NHẬN ĐẶT HÀNG</button>
+    </form>
+
+    <script src="cart.js"></script>
+</body>
+</html>
