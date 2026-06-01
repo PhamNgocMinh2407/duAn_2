@@ -64,7 +64,7 @@ code {
     color: #d63384;
 }
 
-/* Các nút bấm */
+
 .btn-delete { 
     background: #dc3545; 
     color: white; 
@@ -95,9 +95,9 @@ code {
     background: #5a6268;
 }
 
-/* admin-style.css */
 
-/* 1. Tổng quan trang */
+
+
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5;
@@ -109,7 +109,7 @@ body {
     padding: 40px 20px;
 }
 
-/* 2. Khung chứa bảng (Card) */
+
 .db-card {
     background: #ffffff;
     width: 100%;
@@ -131,7 +131,7 @@ p {
     font-size: 14px;
 }
 
-/* 3. Thiết kế Bảng dữ liệu */
+
 table {
     width: 100%;
     border-collapse: separate;
@@ -172,7 +172,7 @@ tr:hover {
     background-color: #fcfcfc;
 }
 
-/* 4. Định dạng dữ liệu đặc biệt */
+
 code {
     background: #f1f3f4;
     padding: 4px 8px;
@@ -191,7 +191,7 @@ code {
     font-weight: bold;
 }
 
-/* 5. Nhóm nút bấm */
+
 .btn-group {
     margin-top: 30px;
     display: flex;
@@ -208,7 +208,7 @@ button {
     transition: all 0.2s ease;
 }
 
-/* Nút quay lại */
+
 .btn-back {
     background-color: #1a73e8;
     color: white;
@@ -229,7 +229,7 @@ button {
     background-color: #e8eaed;
 }
 
-/* Nút xóa từng dòng */
+
 .btn-delete {
     background-color: #feeef0;
     color: #d93025;
