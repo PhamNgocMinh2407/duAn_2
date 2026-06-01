@@ -2,14 +2,16 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách tài khoản đã đăng ký</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Trị Hệ Thống - LocalStorage</title>
     
     <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
+
     <div class="db-card">
         <h2>Dữ liệu hệ thống (LocalStorage)</h2>
-        <p>Đây là trang riêng lưu trữ tất cả thông tin đăng ký để đối soát đăng nhập.</p>
+        <p>Trang quản trị lưu trữ danh sách đối soát tài khoản đăng ký và Social Login.</p>
         
         <table id="userTable">
             <thead>
@@ -23,28 +25,41 @@
                 </tr>
             </thead>
             <tbody id="userListData">
-                
-            </tbody>
+                </tbody>
         </table>
         
-        <br>
-        <button class="btn-back" onclick="window.location.href='login.html'">Quay lại Đăng nhập</button>
+        <div class="btn-group">
+            <button class="btn-back" onclick="window.location.href='login.html'">Quay lại Đăng nhập</button>
+            <button class="btn-clear" onclick="clearAll()">Xóa sạch dữ liệu Admin</button>
+        </div>
     </div>
 
     <script>
+        // 1. Hàm hiển thị danh sách người dùng
         function loadUsers() {
-         
             const users = JSON.parse(localStorage.getItem('userAccounts')) || [];
             const tableBody = document.getElementById('userListData');
             tableBody.innerHTML = '';
 
+            if (users.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px; color: #999;">Chưa có tài khoản nào được đăng ký.</td></tr>';
+                return;
+            }
+
             users.forEach((user, index) => {
+                // Kiểm tra xem có phải tài khoản Google/Facebook không
+                const isSocial = user.password && user.password.includes('Logged_via');
+                
+                const displayPassword = isSocial 
+                    ? `<span class="social-tag">Xác thực ${user.method}</span>` 
+                    : `<code>${user.password}</code>`;
+
                 tableBody.innerHTML += `
-                    <tr>
-                        <td>${user.fullName || 'N/A'}</td>
+                    <tr style="${isSocial ? 'background-color: #f8fff9;' : ''}">
+                        <td><strong>${user.fullName || 'N/A'}</strong></td>
                         <td>${user.phone || 'N/A'}</td>
                         <td>${user.email || 'N/A'}</td>
-                        <td><code>${user.password}</code></td>
+                        <td>${displayPassword}</td>
                         <td>${user.dob || 'N/A'}</td>
                         <td><button class="btn-delete" onclick="deleteUser(${index})">Xóa</button></td>
                     </tr>
@@ -52,16 +67,38 @@
             });
         }
 
+        // 2. Hàm xóa 1 tài khoản và xử lý Logout nếu cần
         function deleteUser(index) {
-            if(confirm("Bạn có chắc muốn xóa tài khoản này? Người này sẽ không thể đăng nhập được nữa.")) {
-                let users = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            let users = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            const targetUser = users[index];
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if(confirm(`Bạn có chắc muốn xóa tài khoản của: ${targetUser.fullName}?`)) {
+                
+                // Nếu người bị xóa đang online thì đá ra ngoài luôn
+                if (currentUser && (currentUser.email === targetUser.email || currentUser.phone === targetUser.phone)) {
+                    localStorage.removeItem('currentUser');
+                    sessionStorage.removeItem('isLoggedIn');
+                    alert("Tài khoản đang sử dụng đã bị xóa khỏi hệ thống.");
+                }
+
                 users.splice(index, 1);
                 localStorage.setItem('userAccounts', JSON.stringify(users));
                 loadUsers(); 
             }
         }
 
-        
+        // 3. Hàm xóa sạch toàn bộ Database
+        function clearAll() {
+            if(confirm("CẢNH BÁO: Xóa toàn bộ dữ liệu người dùng? Mọi phiên đăng nhập sẽ kết thúc.")) {
+                localStorage.setItem('userAccounts', JSON.stringify([]));
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('isLoggedIn');
+                loadUsers();
+            }
+        }
+
+        // Tự động chạy khi trang web tải xong
         window.onload = loadUsers;
     </script>
 </body>
