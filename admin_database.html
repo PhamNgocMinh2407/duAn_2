@@ -47,7 +47,7 @@
             }
 
             users.forEach((user, index) => {
-                // Kiểm tra xem có phải tài khoản Google/Facebook không
+               
                 const isSocial = user.password && user.password.includes('Logged_via');
                 
                 const displayPassword = isSocial 
@@ -67,7 +67,7 @@
             });
         }
 
-        // 2. Hàm xóa 1 tài khoản và xử lý Logout nếu cần
+       
         function deleteUser(index) {
             let users = JSON.parse(localStorage.getItem('userAccounts')) || [];
             const targetUser = users[index];
@@ -75,7 +75,7 @@
 
             if(confirm(`Bạn có chắc muốn xóa tài khoản của: ${targetUser.fullName}?`)) {
                 
-                // Nếu người bị xóa đang online thì đá ra ngoài luôn
+                
                 if (currentUser && (currentUser.email === targetUser.email || currentUser.phone === targetUser.phone)) {
                     localStorage.removeItem('currentUser');
                     sessionStorage.removeItem('isLoggedIn');
@@ -88,7 +88,7 @@
             }
         }
 
-        // 3. Hàm xóa sạch toàn bộ Database
+        
         function clearAll() {
             if(confirm("CẢNH BÁO: Xóa toàn bộ dữ liệu người dùng? Mọi phiên đăng nhập sẽ kết thúc.")) {
                 localStorage.setItem('userAccounts', JSON.stringify([]));
