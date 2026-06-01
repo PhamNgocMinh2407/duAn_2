@@ -1,27 +1,75 @@
-const search = document.getElementById("search");
+const products = [
 
-if(search){
+{
+id:"rtx5070",
+name:"RTX 5070",
+price:"20.000.000 VNĐ",
+image:"../assets/images/gpu.jpg"
+},
 
-    search.addEventListener("keyup", () => {
+{
+id:"ryzen9800x3d",
+name:"Ryzen 7 9800X3D",
+price:"12.000.000 VNĐ",
+image:"../assets/images/cpu.jpg"
+},
 
-        const keyword = search.value.toLowerCase();
+{
+id:"ddr5",
+name:"DDR5 32GB",
+price:"2.800.000 VNĐ",
+image:"../assets/images/ram.jpg"
+}
 
-        const products =
-        document.querySelectorAll(".product");
+];
 
-        products.forEach(product => {
+function renderProducts(data){
 
-            const text =
-            product.innerText.toLowerCase();
+const grid =
+document.getElementById("productGrid");
 
-            if(text.includes(keyword)){
-                product.style.display = "block";
-            }else{
-                product.style.display = "none";
-            }
+grid.innerHTML="";
 
-        });
+data.forEach(product=>{
 
-    });
+grid.innerHTML += `
+
+<div class="product">
+
+<img src="${product.image}">
+
+<h3>${product.name}</h3>
+
+<p>${product.price}</p>
+
+<a href="product-detail.html?id=${product.id}">
+<button>Xem chi tiết</button>
+</a>
+
+</div>
+
+`;
+
+});
 
 }
+
+renderProducts(products);
+
+document
+.getElementById("searchInput")
+.addEventListener("keyup",e=>{
+
+const keyword =
+e.target.value.toLowerCase();
+
+const filtered =
+products.filter(product=>
+product.name
+.toLowerCase()
+.includes(keyword)
+);
+
+renderProducts(filtered);
+
+});

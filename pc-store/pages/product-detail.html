@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/detail.css">
+<title>Chi tiết sản phẩm</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/detail.css">
+
 </head>
 <body>
 
 <nav>
-    <div class="logo">PC STORE</div>
 
-    <ul>
-        <li><a href="../index.html">Trang chủ</a></li>
-        <li><a href="products.html">Sản phẩm</a></li>
-    </ul>
+<div class="logo">PC STORE</div>
+
+<ul>
+<li><a href="../index.html">Trang chủ</a></li>
+<li><a href="products.html">Sản phẩm</a></li>
+</ul>
+
 </nav>
 
 <div class="detail-container">
 
-    <div class="detail-card">
-        <img src="../assets/image/gpu.jpg">
-        <h1>RTX 5070</h1>
+<div class="detail-card">
 
-        <p>Giá: 20.000.000 VNĐ</p>
+<img id="productImage">
 
-        <p>
-            Card đồ họa thế hệ mới,
-            hiệu năng mạnh cho gaming và đồ họa.
-        </p>
+<h1 id="productName"></h1>
 
-        <button>Mua ngay</button>
-    </div>
+<p id="productPrice"></p>
+
+<p id="productDescription"></p>
+
+<button>Mua ngay</button>
 
 </div>
+
+</div>
+
+<script src="../js/detail.js"></script>
 
 </body>
 </html>

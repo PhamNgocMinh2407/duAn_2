@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC STORE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC STORE</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <nav>
-    <div class="logo">PC STORE</div>
 
-    <ul>
-        <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="pages/products.html">Sản phẩm</a></li>
-        <li><a href="pages/news.html">Tin tức</a></li>
-    </ul>
+<div class="logo">
+PC STORE
+</div>
+
+<div class="nav-search">
+<input type="text" placeholder="🔍 Tìm kiếm linh kiện...">
+</div>
+
+<ul>
+<li><a href="index.html">Trang chủ</a></li>
+<li><a href="pages/products.html">Sản phẩm</a></li>
+<li><a href="pages/category.html">Danh mục</a></li>
+<li><a href="pages/news.html">Tin tức</a></li>
+</ul>
+
 </nav>
 
 <header class="hero">
-    <h1>Linh Kiện Máy Tính Chính Hãng</h1>
 
-    <p>
-        CPU - VGA - RAM - SSD - Mainboard
-    </p>
+<h1>
+LINH KIỆN MÁY TÍNH CHÍNH HÃNG
+</h1>
 
-    <a href="pages/products.html" class="btn">
-        Xem sản phẩm
-    </a>
+<p>
+CPU - VGA - RAM - SSD - MAINBOARD
+</p>
+
+<a href="pages/products.html">
+<button class="btn-buy">
+Xem sản phẩm
+</button>
+</a>
+
 </header>
 
 <section class="featured">
 
-    <div class="card">
+<h2>Sản phẩm nổi bật</h2>
 
-        <img src="assets/image/gpu.jpg">
+<div class="cards">
 
-        <h3>RTX 5070</h3>
+<div class="card">
+<img src="assets/images/gpu.jpg">
+<h3>RTX 5070</h3>
+</div>
 
-        <p>20.000.000 VNĐ</p>
+<div class="card">
+<img src="assets/images/cpu.jpg">
+<h3>Ryzen 7 9800X3D</h3>
+</div>
 
-    </div>
+<div class="card">
+<img src="assets/images/ram.jpg">
+<h3>DDR5 32GB</h3>
+</div>
 
-    <div class="card">
-
-        <img src="assets/image/cpu.jpg">
-
-        <h3>Ryzen 7 9800X3D</h3>
-
-        <p>12.000.000 VNĐ</p>
-
-    </div>
-
-    <div class="card">
-
-        <img src="assets/image/ram.jpg">
-
-        <h3>DDR5 32GB</h3>
-
-        <p>2.800.000 VNĐ</p>
-
-    </div>
+</div>
 
 </section>
 
 <footer>
-    © 2026 PC STORE
+<p>© 2026 PC STORE</p>
 </footer>
 
 </body>
