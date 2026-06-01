@@ -151,29 +151,29 @@ input:focus { border-color: var(--primary-blue); }
     font-weight: bold;
 }
 
-/* Hiệu ứng tổng quát cho tất cả các nút */
+
 button, .btn-main, .btn-outline, .btn-back {
     position: relative;
-    overflow: hidden; /* Để hiệu ứng gợn sóng không tràn ra ngoài */
-    transition: all 0.2s ease; /* Giúp các biến đổi mượt mà hơn */
+    overflow: hidden; 
+    transition: all 0.2s ease;
     cursor: pointer;
     outline: none;
 }
 
-/* 1. Hiệu ứng Di chuột qua (Hover) */
+
 button:hover {
     filter: brightness(1.1); /* Làm nút sáng lên một chút */
     transform: translateY(-2px); /* Nút nhích lên nhẹ tạo cảm giác nổi */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng đậm hơn */
 }
 
-/* 2. Hiệu ứng Khi Nhấn (Active) */
+
 button:active {
     transform: translateY(0) scale(0.95); /* Thu nhỏ nút lại 5% tạo cảm giác bị lún xuống */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Giảm bóng đổ */
 }
 
-/* 3. Hiệu ứng Gợn sóng (Ripple) bằng CSS giả lập */
+
 button::after {
     content: "";
     position: absolute;
