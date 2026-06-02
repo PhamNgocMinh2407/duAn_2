@@ -1,79 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PC STORE</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PC STORE</title>
 
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">PC STORE</div>
 
-<nav>
+      <div class="nav-search">
+        <input type="text" placeholder="🔍 Tìm kiếm linh kiện..." />
+      </div>
 
-<div class="logo">
-PC STORE
-</div>
+      <ul>
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="./pages/products.html">Sản phẩm</a></li>
+        <li><a href="./pages/category.html">Danh mục</a></li>
+        <li><a href="./pages/news.html">Tin tức</a></li>
+        <li><a href="./pages/account.html">Tài Khoản</a></li>
+      </ul>
+    </nav>
 
-<div class="nav-search">
-<input type="text" placeholder="🔍 Tìm kiếm linh kiện...">
-</div>
+    <header class="hero">
+      <h1>LINH KIỆN MÁY TÍNH CHÍNH HÃNG</h1>
 
-<ul>
-<li><a href="index.html">Trang chủ</a></li>
-<li><a href="pages/products.html">Sản phẩm</a></li>
-<li><a href="pages/category.html">Danh mục</a></li>
-<li><a href="pages/news.html">Tin tức</a></li>
-</ul>
+      <p>CPU - VGA - RAM - SSD - MAINBOARD</p>
 
-</nav>
+      <a href="pages/products.html">
+        <button class="btn-buy">Xem sản phẩm</button>
+      </a>
+    </header>
 
-<header class="hero">
+    <section class="promo-banner">
+      <div class="promo-banner__content">
+        <span>Mở kho quà vàng</span>
+        <h2>Triệu lời cảm ơn</h2>
+        <p>23 phần quà, Cơ hội trúng thưởng cao. Giảm thêm đến 90% !!!.</p>
+        <a href="pages/products.html" class="btn-buy">Khám phá ngay</a>
+      </div>
+      <div class="promo-banner__media">
+        <img src="assets/images/quangcao1.jpg" alt="Khuyến mãi PC Store" />
+      </div>
+    </section>
 
-<h1>
-LINH KIỆN MÁY TÍNH CHÍNH HÃNG
-</h1>
+    <section class="promo-row">
+      <div class="promo-card promo-card--light">
+        <h3>Đủ tính năng.</h3>
+        <p>Đầy giá trị để bạn chọn laptop tốt nhất.</p>
+        <div class="promo-banner__media">
+          <img src="assets/images/quangcao3.jpeg" alt="Khuyến mãi PC Store" />
+        </div>
+      </div>
+      <div class="promo-card promo-card--dark">
+        <h3>Màn hình Esport OLED đầu tiên trên giới</h3>
+        <p>Màn hình cho cầu thủ chuyên nghiệp.</p>
+        <div class="promo-banner__media">
+          <img src="assets/images/quangcao2.jpg" alt="Khuyến mãi PC Store" />
+        </div>
+      </div>
+    </section>
 
-<p>
-CPU - VGA - RAM - SSD - MAINBOARD
-</p>
+    <section class="featured">
+      <h2>Sản phẩm nổi bật</h2>
 
-<a href="pages/products.html">
-<button class="btn-buy">
-Xem sản phẩm
-</button>
-</a>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/images/gpu.jpg" />
+          <h3>RTX 5070</h3>
+        </div>
 
-</header>
+        <div class="card">
+          <img src="assets/images/cpu.jpg" />
+          <h3>Ryzen 7 9800X3D</h3>
+        </div>
 
-<section class="featured">
+        <div class="card">
+          <img src="assets/images/ram.jpg" />
+          <h3>DDR5 32GB</h3>
+        </div>
+      </div>
+    </section>
 
-<h2>Sản phẩm nổi bật</h2>
-
-<div class="cards">
-
-<div class="card">
-<img src="assets/images/gpu.jpg">
-<h3>RTX 5070</h3>
-</div>
-
-<div class="card">
-<img src="assets/images/cpu.jpg">
-<h3>Ryzen 7 9800X3D</h3>
-</div>
-
-<div class="card">
-<img src="assets/images/ram.jpg">
-<h3>DDR5 32GB</h3>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 PC STORE</p>
-</footer>
-
-</body>
+    <footer>
+      <p>© 2026 PC STORE</p>
+    </footer>
+  </body>
 </html>

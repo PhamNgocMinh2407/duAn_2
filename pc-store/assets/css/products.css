@@ -19,11 +19,12 @@ transition:0.3s;
 .product:hover{
 transform:translateY(-5px);
 }
-
-.product img{
+.product img {
 width:100%;
 height:220px;
-object-fit:cover;
+object-fit:contain;
+object-position: center;
+display: block;
 border-radius:10px;
 }
 
