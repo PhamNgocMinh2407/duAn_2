@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Trị Hệ Thống - LocalStorage</title>
+    
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+    <div class="db-card">
+        <h2>Dữ liệu hệ thống (LocalStorage)</h2>
+        <p>Trang quản trị lưu trữ danh sách đối soát tài khoản đăng ký và Social Login.</p>
+        
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Mật khẩu</th>
+                    <th>Ngày sinh</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="userListData">
+                </tbody>
+        </table>
+        
+        <div class="btn-group">
+            <button class="btn-back" onclick="window.location.href='login.html'">Quay lại Đăng nhập</button>
+            <button class="btn-clear" onclick="clearAll()">Xóa sạch dữ liệu Admin</button>
+        </div>
+    </div>
+
+    <script>
+        
+        function loadUsers() {
+            const users = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            const tableBody = document.getElementById('userListData');
+            tableBody.innerHTML = '';
+
+            if (users.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px; color: #999;">Chưa có tài khoản nào được đăng ký.</td></tr>';
+                return;
+            }
+
+            users.forEach((user, index) => {
+               
+                const isSocial = user.password && user.password.includes('Logged_via');
+                
+                const displayPassword = isSocial 
+                    ? `<span class="social-tag">Xác thực ${user.method}</span>` 
+                    : `<code>${user.password}</code>`;
+
+                tableBody.innerHTML += `
+                    <tr style="${isSocial ? 'background-color: #f8fff9;' : ''}">
+                        <td><strong>${user.fullName || 'N/A'}</strong></td>
+                        <td>${user.phone || 'N/A'}</td>
+                        <td>${user.email || 'N/A'}</td>
+                        <td>${displayPassword}</td>
+                        <td>${user.dob || 'N/A'}</td>
+                        <td><button class="btn-delete" onclick="deleteUser(${index})">Xóa</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+       
+        function deleteUser(index) {
+            let users = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            const targetUser = users[index];
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if(confirm(`Bạn có chắc muốn xóa tài khoản của: ${targetUser.fullName}?`)) {
+                
+                
+                if (currentUser && (currentUser.email === targetUser.email || currentUser.phone === targetUser.phone)) {
+                    localStorage.removeItem('currentUser');
+                    sessionStorage.removeItem('isLoggedIn');
+                    alert("Tài khoản đang sử dụng đã bị xóa khỏi hệ thống.");
+                }
+
+                users.splice(index, 1);
+                localStorage.setItem('userAccounts', JSON.stringify(users));
+                loadUsers(); 
+            }
+        }
+
+        
+        function clearAll() {
+            if(confirm("CẢNH BÁO: Xóa toàn bộ dữ liệu người dùng? Mọi phiên đăng nhập sẽ kết thúc.")) {
+                localStorage.setItem('userAccounts', JSON.stringify([]));
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('isLoggedIn');
+                loadUsers();
+            }
+        }
+
+        
+        window.onload = loadUsers;
+    </script>
+</body>
+</html>

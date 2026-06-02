@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập hệ thống</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-card">
+        <h2>Đăng nhập</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Số điện thoại / Email</label>
+                <input type="text" id="loginUser" placeholder="Nhập SĐT hoặc Email" required>
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="loginPass" placeholder="Nhập mật khẩu" required>
+            </div>
+            
+            <div style="text-align: right; margin-bottom: 1rem;">
+                <a href="#" class="footer-text" style="color: #666;">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn-main">Đăng nhập</button>
+        </form>
+
+        <div style="text-align: center; margin: 1.5rem 0; color: #aaa;">Hoặc đăng nhập bằng</div>
+
+      <div class="social-login">
+    <button type="button" class="btn-social" onclick="loginWithGoogle()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" width="20"> Google
+    </button>
+    <button type="button" class="btn-social" onclick="loginWithFacebook()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="20"> Facebook
+    </button>
+</div>
+
+        <p class="footer-text">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+    </div>
+
+    <script src="database.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+</html>
