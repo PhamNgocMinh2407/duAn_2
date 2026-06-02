@@ -55,7 +55,7 @@ if (registerForm) {
             localStorage.setItem('userAccounts', JSON.stringify(accounts));
             
             alert("Đăng ký thành công! Bạn có thể dùng thông tin này để đăng nhập.");
-            window.location.href = "login.html";
+            window.location.href = "Login.html";
         }
     });
 }
