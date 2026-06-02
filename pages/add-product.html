@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products Management</title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+    <div class="main">
+        <h1> Product Management </h1>
+        <input type="text" id="name" placeholder="tên sản phẩm">
+        <br><br>
+        <input type="text" id="image" placeholder="Link ảnh sản phẩm">
+        <br><br>
+        <input type="text" id = "price" placeholder="giá sản phẩm">
+        <br><br>
+        <button onClick="addProduct()">Add Product </button>
+        <br><br><br>
+        <table border="1" cellpadding="15" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                 </tr>
+            </thead>
+            <tbody id="product-list">
+             
+            </tbody>
+        </table>
+    </div>
+    <script src="../assets/js/product.js"></script>
+</body>
+</html>

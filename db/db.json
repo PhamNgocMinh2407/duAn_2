@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "name": "quan ",
+      "price": "1$",
+      "id": "tAqR4wSe00s"
+    },
+    {
+      "id": "uR3Ce1E7nCk",
+      "name": "dép ",
+      "price": "10k"
+    }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "userId": "u1",
+      "productIds": [
+        "tAqR4wSe00s",
+        "uR3Ce1E7nCk"
+      ],
+      "totalPrice": "11$",
+      "status": "Cancelled"
+    }
+  ],
+  "users": [],
+  "vouchers": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
