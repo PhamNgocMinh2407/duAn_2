@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin tài khoản SMEMBER</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // KIỂM TRA QUYỀN TRUY CẬP (Giữ nguyên logic của bạn)
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="auth-card profile-card">
+        <div class="profile-header">
+            <img src="https://cellphones.com.vn/media/wysiwyg/Resource/S-Member.png" alt="S-Member" width="100">
+            <h2>Thông tin cá nhân</h2>
+            <p id="account-tag" style="font-size: 12px; color: #d70018; font-weight: bold; margin-top: 5px;"></p>
+        </div>
+
+        <div class="profile-body">
+            <div class="info-group">
+                <label>Họ và tên:</label>
+                <p id="display-name">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Số điện thoại:</label>
+                <p id="display-phone">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Email:</label>
+                <p id="display-email">Đang tải...</p>
+            </div>
+            <div class="info-group">
+                <label>Ngày sinh:</label>
+                <p id="display-dob">Đang tải...</p>
+            </div>
+        </div>
+
+        <div class="profile-footer">
+            <button class="btn-main" onclick="window.location.href='index.html'">Về trang chủ</button>
+            <button class="btn-outline" onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <script src="database.js"></script>
+    <script>
+        // 1. LẤY THÔNG TIN TỪ BỘ NHỚ TẠM
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (user) {
+            // 2. LOGIC TỰ CẤP: Luôn đối soát lại với Admin để lấy dữ liệu mới nhất
+            const allAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            const freshData = allAccounts.find(a => a.email === user.email);
+            
+            // Nếu tìm thấy dữ liệu "tươi" hơn trong Admin, dùng nó luôn
+            if (freshData) {
+                user = freshData;
+            }
+
+            // 3. HIỂN THỊ DỮ LIỆU
+            document.getElementById('display-name').innerText = user.fullName || "Chưa cập nhật";
+            document.getElementById('display-phone').innerText = user.phone || "Chưa cập nhật";
+            document.getElementById('display-email').innerText = user.email || "Chưa cập nhật";
+            document.getElementById('display-dob').innerText = user.dob || "Chưa cập nhật";
+
+            // Hiển thị nhãn nếu là tài khoản Facebook/Google
+            if (user.method && user.method !== 'Manual') {
+                document.getElementById('account-tag').innerText = `Tài khoản liên kết ${user.method}`;
+            }
+        }
+
+        function logout() {
+            // Thêm confirm cho chắc chắn
+            if(confirm("Bạn có muốn đăng xuất không?")) {
+                sessionStorage.removeItem('isLoggedIn'); 
+                localStorage.removeItem('currentUser'); 
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+</body>
+</html>
