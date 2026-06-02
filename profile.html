@@ -2,83 +2,177 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thông tin tài khoản SMEMBER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
-        // KIỂM TRA QUYỀN TRUY CẬP (Giữ nguyên logic của bạn)
         if (sessionStorage.getItem('isLoggedIn') !== 'true') {
             window.location.href = "login.html";
         }
     </script>
 </head>
-<body>
-    <div class="auth-card profile-card">
-        <div class="profile-header">
-            <img src="https://cellphones.com.vn/media/wysiwyg/Resource/S-Member.png" alt="S-Member" width="100">
-            <h2>Thông tin cá nhân</h2>
-            <p id="account-tag" style="font-size: 12px; color: #d70018; font-weight: bold; margin-top: 5px;"></p>
-        </div>
+<body class="bg-gray">
 
-        <div class="profile-body">
-            <div class="info-group">
-                <label>Họ và tên:</label>
-                <p id="display-name">Đang tải...</p>
+    <header class="main-header">
+        <div class="container header-content">
+            <img src="https://cellphones.com.vn/media/wysiwyg/Resource/S-Member.png" alt="Logo" class="logo" onclick="window.location.href='index.html'">
+            <div class="search-bar">
+                <input type="text" placeholder="Bạn cần tìm gì...">
+                <button><i class="fa fa-search"></i></button>
             </div>
-            <div class="info-group">
-                <label>Số điện thoại:</label>
-                <p id="display-phone">Đang tải...</p>
-            </div>
-            <div class="info-group">
-                <label>Email:</label>
-                <p id="display-email">Đang tải...</p>
-            </div>
-            <div class="info-group">
-                <label>Ngày sinh:</label>
-                <p id="display-dob">Đang tải...</p>
+            <div class="header-icons">
+                <div class="icon-item"><i class="fa fa-phone"></i> <span>1800 6173</span></div>
+                <div class="icon-item" onclick="logout()"><i class="fa fa-sign-out-alt"></i> <span>Đăng xuất</span></div>
             </div>
         </div>
+    </header>
 
-        <div class="profile-footer">
-            <button class="btn-main" onclick="window.location.href='index.html'">Về trang chủ</button>
-            <button class="btn-outline" onclick="logout()">Đăng xuất</button>
-        </div>
+    <div class="container main-layout">
+        <aside class="sidebar">
+            <div class="user-brief">
+                <div class="avatar-wrapper">
+                    <img id="user-avatar" src="https://via.placeholder.com/80" alt="Avatar">
+                    <label for="upload-avatar" class="change-avatar-btn">
+                        <i class="fa fa-camera"></i>
+                    </label>
+                    <input type="file" id="upload-avatar" accept="image/*" style="display: none;">
+                </div>
+                <h3 id="sidebar-name">Nghĩa Phạm</h3>
+            </div>
+            <nav class="side-nav">
+                <a href="#" class="active"><i class="fa fa-user"></i> Thông tin tài khoản</a>
+                <a href="#"><i class="fa fa-map-marker-alt"></i> Sổ địa chỉ</a>
+                <a href="#"><i class="fa fa-file-alt"></i> Quản lý đơn hàng</a>
+                <a href="#"><i class="fa fa-eye"></i> Sản phẩm đã xem</a>
+                <a href="javascript:void(0)" onclick="logout()" class="text-red"><i class="fa fa-power-off"></i> Đăng xuất</a>
+            </nav>
+        </aside>
+
+        <main class="profile-content">
+            <div class="content-card">
+                <h2>Thông tin tài khoản</h2>
+                <hr>
+                <form id="profile-form">
+                    <div class="form-row">
+                        <label>Họ Tên</label>
+                        <input type="text" id="edit-name" placeholder="Nhập họ tên">
+                    </div>
+                    <div class="form-row">
+                        <label>Số điện thoại</label>
+                        <input type="text" id="edit-phone" readonly class="readonly">
+                    </div>
+                    <div class="form-row">
+                        <label>Email</label>
+                        <input type="email" id="edit-email" readonly class="readonly">
+                    </div>
+                    <div class="form-row">
+                        <label>Ngày sinh</label>
+                        <input type="date" id="edit-dob">
+                    </div>
+                    <div class="form-row">
+                        <p id="account-tag" style="color: #d70018; font-weight: bold; font-size: 13px;"></p>
+                    </div>
+                    <button type="button" class="btn-submit" onclick="saveChanges()">LƯU THAY ĐỔI</button>
+                </form>
+            </div>
+        </main>
     </div>
 
-    <script src="database.js"></script>
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>VỀ CHÚNG TÔI</h4>
+                <p>Giới thiệu</p><p>Tuyển dụng</p>
+            </div>
+            <div>
+                <h4>CHÍNH SÁCH</h4>
+                <p>Bảo hành</p><p>Giao hàng</p>
+            </div>
+            <div>
+                <h4>TỔNG ĐÀI HỖ TRỢ</h4>
+                <p>Mua hàng: <b>1900.5301</b></p>
+                <p>Khiếu nại: <b>1800.6173</b></p>
+            </div>
+            <div>
+                <h4>THANH TOÁN</h4>
+                <img src="https://gearvn.com/assets/img/pay.png" alt="payment" style="max-width: 200px;">
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // 1. LẤY THÔNG TIN TỪ BỘ NHỚ TẠM
+        // Lấy dữ liệu (Giữ nguyên logic của bạn)
         let user = JSON.parse(localStorage.getItem('currentUser'));
 
-        if (user) {
-            // 2. LOGIC TỰ CẤP: Luôn đối soát lại với Admin để lấy dữ liệu mới nhất
-            const allAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-            const freshData = allAccounts.find(a => a.email === user.email);
-            
-            // Nếu tìm thấy dữ liệu "tươi" hơn trong Admin, dùng nó luôn
-            if (freshData) {
-                user = freshData;
+        function loadData() {
+            if (user) {
+                const allAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+                const freshData = allAccounts.find(a => a.email === user.email);
+                if (freshData) user = freshData;
+
+                
+                document.getElementById('sidebar-name').innerText = user.fullName;
+                document.getElementById('edit-name').value = user.fullName;
+                document.getElementById('edit-phone').value = user.phone || "N/A";
+                document.getElementById('edit-email').value = user.email;
+                document.getElementById('edit-dob').value = user.dob || "";
+                
+               
+                if(user.avatar) {
+                    document.getElementById('user-avatar').src = user.avatar;
+                }
+
+                if (user.method && user.method !== 'Manual') {
+                    document.getElementById('account-tag').innerText = `Loại: ${user.method}`;
+                }
             }
+        }
 
-            // 3. HIỂN THỊ DỮ LIỆU
-            document.getElementById('display-name').innerText = user.fullName || "Chưa cập nhật";
-            document.getElementById('display-phone').innerText = user.phone || "Chưa cập nhật";
-            document.getElementById('display-email').innerText = user.email || "Chưa cập nhật";
-            document.getElementById('display-dob').innerText = user.dob || "Chưa cập nhật";
+        
+        document.getElementById('upload-avatar').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const base64String = reader.result;
+                document.getElementById('user-avatar').src = base64String;
+                
+                // Lưu vào database
+                updateUserData({ avatar: base64String });
+            }
+            reader.readAsDataURL(file);
+        });
 
-            // Hiển thị nhãn nếu là tài khoản Facebook/Google
-            if (user.method && user.method !== 'Manual') {
-                document.getElementById('account-tag').innerText = `Tài khoản liên kết ${user.method}`;
+        function saveChanges() {
+            const newName = document.getElementById('edit-name').value;
+            const newDob = document.getElementById('edit-dob').value;
+            
+            updateUserData({ fullName: newName, dob: newDob });
+            alert("Đã cập nhật thông tin thành công!");
+            location.reload();
+        }
+
+       
+        function updateUserData(newData) {
+            let accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            let index = accounts.findIndex(u => u.email === user.email);
+            
+            if (index !== -1) {
+                accounts[index] = { ...accounts[index], ...newData };
+                localStorage.setItem('userAccounts', JSON.stringify(accounts));
+                localStorage.setItem('currentUser', JSON.stringify(accounts[index]));
             }
         }
 
         function logout() {
-            // Thêm confirm cho chắc chắn
-            if(confirm("Bạn có muốn đăng xuất không?")) {
-                sessionStorage.removeItem('isLoggedIn'); 
-                localStorage.removeItem('currentUser'); 
+            if(confirm("Bạn muốn đăng xuất?")) {
+                sessionStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('currentUser');
                 window.location.href = "login.html";
             }
         }
+
+        loadData();
     </script>
 </body>
 </html>

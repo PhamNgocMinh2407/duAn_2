@@ -192,3 +192,84 @@ button:active::after {
     height: 200px;
     opacity: 0;
 }
+
+:root { 
+    
+    --primary-blue: #0056b3; 
+    --light-blue: #e7f1ff;
+    --bg-gray: #f4f4f4; 
+}
+
+
+.main-header { 
+    background: #fff; 
+    padding: 15px 0; 
+    border-bottom: 2px solid var(--primary-blue); /* Đổi sang xanh */
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+
+.search-bar button { 
+    background: var(--primary-blue); /* Đổi sang xanh */
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+
+.change-avatar-btn { 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--primary-blue); /* Đổi sang xanh */
+    color: white; 
+    width: 25px; 
+    height: 25px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+}
+
+
+.side-nav a.active { 
+    color: var(--primary-blue); /* Đổi sang xanh */
+    font-weight: bold; 
+    background: var(--light-blue);
+    border-radius: 5px;
+}
+
+
+.btn-submit { 
+    background: var(--primary-blue); /* Đổi sang xanh */
+    color: white; 
+    border: none; 
+    padding: 12px 30px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100%; 
+    font-weight: bold; 
+    margin-top: 10px; 
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #004494; /* Xanh đậm hơn khi hover */
+}
+
+
+.main-footer { 
+    background: #fff; 
+    margin-top: 50px; 
+    padding: 40px 0; 
+    border-top: 3px solid var(--primary-blue); /* Đổi sang xanh */
+}
+
+
+#account-tag {
+    color: var(--primary-blue) !important;
+}
