@@ -23,6 +23,7 @@ async function getProducts() {
 async function addProduct() {
     const product = {
         name: document.getElementById("name").value,
+          image: document.getElementById("image").value,
         price: document.getElementById("price").value
     };
     await fetch( api, {
